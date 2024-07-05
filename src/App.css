@@ -1,0 +1,145 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+header {
+  width: 100%;
+  background-color: slateblue;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link{
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  margin: 10px 15px;
+  
+}
+#logout{
+  padding: 5px;
+}
+header ul{
+  display: flex;
+  list-style: none;
+}
+.logo{
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+}
+
+.blog-list {
+  width: 100%;
+  background: whitesmoke;
+  padding: 10px;
+}
+
+.blog {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background-color: rgb(171, 172, 172);
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+.login-form{
+  width: 25%;
+  padding: 10px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid;
+  
+}
+.login-form input{
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+.login-form button{
+  padding: 10px 15px;
+  background-color: greenyellow;
+  border: none;
+  cursor: pointer;
+
+}
+.login-form button:hover{
+  border: 1px solid;
+
+}
+.profile{
+  width:50%;
+  margin:15px auto;
+  padding: 20px;
+  border: 1px solid;
+}
+.profile input{
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.add-blog{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 15px auto;
+  padding: 10px;
+}
+.add-blog input , textarea{
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+}
+
+#blog-delete{
+  display: flex;
+  justify-content: space-between;
+}
+#blog-delete button{
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background: rgb(253, 32, 32);
+  color: white;
+}
+
+ 
+@media screen  and (max-width:480px) {
+  
+  .login-form{
+    width: 90%;
+  }
+  .blog{
+    width: 90%;
+  }
+  .profile{
+    width: 90%;
+  }
+  .add-blog{
+    width: 90%;
+  }
+}
+
+.photo{
+  width: 200px;
+  cursor: pointer;
+}
+
