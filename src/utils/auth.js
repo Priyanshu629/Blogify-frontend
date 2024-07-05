@@ -1,9 +1,10 @@
 import { toast } from "react-hot-toast";
+import { USER_BACKEND_URL } from "./constants";
 
 
 export const handleLogin = async ({ username, password }) => {
   try {
-    const response = await fetch("http://localhost:5000/api/v1/user/login", {
+    const response = await fetch(USER_BACKEND_URL+"login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +49,7 @@ export const handleSignUp = async ({
       user.append("photo", photo);
     }
 
-    const response = await fetch("http://localhost:5000/api/v1/user/register", {
+    const response = await fetch(USER_BACKEND_URL+"register", {
       method: "POST",
       body: user,
       credentials: "include",
@@ -72,7 +73,7 @@ export const handleSignUp = async ({
 };
 
 export const getProfile=async()=>{
-    const response = await fetch("http://localhost:5000/api/v1/user/profile",{
+    const response = await fetch(USER_BACKEND_URL+"profile",{
       method:"GET",
       credentials:"include",
     })
@@ -87,7 +88,7 @@ export const getProfile=async()=>{
 }
 
 export const logout = async () => {
-  await fetch("http://localhost:5000/api/v1/user/logout", {
+  await fetch(USER_BACKEND_URL+"logout", {
     method: "POST",
     credentials:"include"
   });
