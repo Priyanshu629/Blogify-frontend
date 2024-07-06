@@ -27,9 +27,9 @@ const UserProvider=({children})=>{
     }
     useEffect(()=>{   
        checkCookie()
-    },[])
+    },[isLoggedIn])
 
-console.log(isLoggedIn,userId);
+
     return (
         <userContext.Provider value={{isLoggedIn,userId}}>
             {children}
