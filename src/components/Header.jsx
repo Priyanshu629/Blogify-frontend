@@ -3,7 +3,7 @@ import { useUser } from "../context/userContext";
 import { logout } from "../utils/auth";
 
 const Header = () => {
-  const { isLoggedIn } = useUser();
+  const { isLoggedIn,setIsLoggedIn,setUserId } = useUser();
 
   return (
     <header>
@@ -25,7 +25,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <button onClick={logout} id="logout">
+              <button onClick={()=>logout(setIsLoggedIn,setUserId)} id="logout">
                 Logout
               </button>
             </li>

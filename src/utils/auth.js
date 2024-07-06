@@ -85,12 +85,13 @@ export const getProfile=async()=>{
     }
 }
 
-export const logout = async () => {
+export const logout = async (setIsLoggedIn,setUserId) => {
   await fetch(USER_BACKEND_URL+"logout", {
     method: "POST",
     credentials:"include"
   });
-
-    window.location.href = "/";
+    setIsLoggedIn(false)
+    setUserId(null)
+    // window.location.href = "/";
   
 };

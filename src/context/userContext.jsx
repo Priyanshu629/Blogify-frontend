@@ -13,7 +13,7 @@ const UserProvider=({children})=>{
             credentials:"include"
          })
          const data = await response.json()
-           console.log(data);
+           
          if(response.status===200){
 
             setIsLoggedIn(true)
@@ -31,7 +31,7 @@ const UserProvider=({children})=>{
 
 
     return (
-        <userContext.Provider value={{isLoggedIn,userId}}>
+        <userContext.Provider value={{isLoggedIn,userId,setIsLoggedIn,setUserId}}>
             {children}
         </userContext.Provider>
     )
