@@ -1,26 +1,30 @@
 import { toast } from "react-hot-toast";
 import { BLOG_BACKEND_URL } from "./constants";
 export const getBlogs = async () => {
-  const response = await fetch(BLOG_BACKEND_URL+"get-blogs");
+  const response = await fetch(BLOG_BACKEND_URL + "get-blogs");
   const data = await response.json();
   return data;
 };
 export const getBlog = async (blogId) => {
-  const response = await fetch(BLOG_BACKEND_URL+"get-blog/"+blogId);
+  const response = await fetch(BLOG_BACKEND_URL + "get-blog/" + blogId);
   const data = await response.json();
   return data;
-}
+};
 
-export const addBlog = async ({ title, body }) => {
-  const response = await fetch(
-    BLOG_BACKEND_URL+"create-blog",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ title, body }),
-    }
-  );
+export const addBlog = async ({ title, body, image }) => {
+  const blog = new FormData();
+  blog.append("title", title);
+  blog.append("body", body);
+
+  if (image) {
+    blog.append("image", image);
+  }
+
+  const response = await fetch(BLOG_BACKEND_URL + "create-blog", {
+    method: "POST",
+    credentials: "include",
+    body: blog,
+  });
   const position = "top-center";
   const data = await response.json();
   if (response.status === 400) {
@@ -33,20 +37,16 @@ export const addBlog = async ({ title, body }) => {
   }
 };
 
-export const deleteBlog = async(blogId) => {
- 
- 
-
+export const deleteBlog = async (blogId, imageId) => {
   const response = await fetch(
-   BLOG_BACKEND_URL+ "delete-blog/"+blogId,
+    BLOG_BACKEND_URL + "delete-blog/" + blogId + "/" + imageId,
     {
       method: "DELETE",
       credentials: "include",
     }
-  )
-  if(response.status===200){
-
-    toast.success("Blog Deleted Successfully", { position:"top-center" });
-    setInterval(()=>window.location.reload(),1000)
+  );
+  if (response.status === 200) {
+    toast.success("Blog Deleted Successfully", { position: "top-center" });
+    setInterval(() => window.location.reload(), 1000);
   }
 };

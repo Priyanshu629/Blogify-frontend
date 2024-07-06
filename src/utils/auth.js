@@ -90,6 +90,7 @@ export const logout = async (setIsLoggedIn,setUserId) => {
     method: "POST",
     credentials:"include"
   });
+    toast.success("log out succefully",{position:"top-center"})
     setIsLoggedIn(false)
     setUserId(null)
     // window.location.href = "/";

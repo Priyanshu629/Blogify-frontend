@@ -1,41 +1,41 @@
-import { createContext,useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 
+const userContext = createContext();
 
-const userContext = createContext()
+const UserProvider = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [userId, setUserId] = useState(null);
 
-const UserProvider=({children})=>{
-    const [isLoggedIn,setIsLoggedIn]= useState(false)
-    const [userId,setUserId]= useState(null)
+  const checkCookie = async () => {
+    const response = await fetch(
+      "https://blogify-backend-ur0p.onrender.com/api/v1/check",
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    );
+    const data = await response.json();
 
-    const checkCookie=async()=>{
-         const response = await fetch("https://blogify-backend-ur0p.onrender.com/api/v1/check",{
-            method:"GET",
-            credentials:"include"
-         })
-         const data = await response.json()
-           
-         if(response.status===200){
-
-            setIsLoggedIn(true)
-            setUserId(data.userId)
-         }
-         else{
-            setIsLoggedIn(false)
-            setUserId(null)
-         }
-
+    if (response.status === 200) {
+      setIsLoggedIn(true);
+      setUserId(data.userId);
+    } else {
+      setIsLoggedIn(false);
+      setUserId(null);
     }
-    useEffect(()=>{   
-       checkCookie()
-    },[isLoggedIn])
+  };
+  useEffect(() => {
+    checkCookie();
+  }, [isLoggedIn]);
 
+  return (
+    <userContext.Provider
+      value={{ isLoggedIn, userId, setIsLoggedIn, setUserId }}
+    >
+      {children}
+    </userContext.Provider>
+  );
+};
+const useUser = () => useContext(userContext);
 
-    return (
-        <userContext.Provider value={{isLoggedIn,userId,setIsLoggedIn,setUserId}}>
-            {children}
-        </userContext.Provider>
-    )
-}
-const useUser =()=> useContext(userContext)
-
-export {UserProvider,useUser}
+export { UserProvider, useUser };

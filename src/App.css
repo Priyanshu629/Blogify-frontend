@@ -17,6 +17,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .link{
@@ -31,6 +32,7 @@ header {
 }
 header ul{
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
 }
 .logo{
@@ -120,8 +122,23 @@ header ul{
   background: rgb(253, 32, 32);
   color: white;
 }
-
- 
+.image{
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid;
+  background-color: greenyellow;
+  cursor: pointer;
+}
+.blog-details{
+  width: 50%;
+  margin: 15px auto;
+}
+.blog-details img{
+  /* width: 500px; */
+  width: 100%;
+  
+}
 @media screen  and (max-width:480px) {
   
   .login-form{
@@ -136,6 +153,11 @@ header ul{
   .add-blog{
     width: 90%;
   }
+  .blog-details{
+    width: 90%;
+  }
+
+  
 }
 
 .photo{

@@ -4,9 +4,10 @@ import { useUser } from "../context/userContext";
 import { deleteBlog } from "../utils/fetchData";
 import { Toaster } from "react-hot-toast";
 
-const Blog = ({ _id, title, body, createdAt, updatedAt, postedBy }) => {
+const Blog = ({ _id, title, body, image, createdAt, updatedAt, postedBy }) => {
   const { isLoggedIn, userId } = useUser();
-
+  const imageId = image?.split("/")[7].split(".")[0];
+  
   return (
     <div className="blog">
       <div id="blog-delete">
@@ -16,7 +17,7 @@ const Blog = ({ _id, title, body, createdAt, updatedAt, postedBy }) => {
           <button
             onClick={() => {
               const response = confirm("Are You Sure?");
-              if (response) deleteBlog(_id);
+              if (response) deleteBlog(_id,imageId);
             }}
           >
             Delete
@@ -25,6 +26,15 @@ const Blog = ({ _id, title, body, createdAt, updatedAt, postedBy }) => {
           ""
         )}
       </div>
+      <img
+        className="photo"
+        src={
+          image
+            ? image
+            : "/blog-dummy-image.jpg"
+        }
+        alt="photo"
+      />
       <h1>{title}</h1>
       <Link to={`/blog/${_id}`}>Read ➡️</Link>
       <Toaster />
