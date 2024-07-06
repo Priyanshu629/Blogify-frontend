@@ -16,7 +16,7 @@ const AddBlog = () => {
 
  if(isLoggedIn===false){
     return window.location.href="/"
- }
+ }  
 
   return (
     <div className="add-blog">

@@ -1,11 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "../utils/auth";
+import { useUser } from "../context/userContext";
 
 const Profile = () => {
+  const {isLoggedIn}=useUser()
   const { data: user } = useQuery({
     queryKey: ["profile"],
     queryFn: getProfile,
   });
+  if(isLoggedIn===false){
+    return window.location.href="/"
+ } 
 
   return (
     <div className="profile">
