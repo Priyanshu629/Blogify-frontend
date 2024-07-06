@@ -1,14 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "../utils/auth";
-
+import { useUser } from "../context/userContext";
+import { useEffect } from "react";
 
 const Profile = () => {
-  
+  const { isLoggedIn } = useUser();
   const { data: user } = useQuery({
     queryKey: ["profile"],
     queryFn: getProfile,
   });
- 
+
+  useEffect(() => {
+    if (isLoggedIn === false) return (window.location.href = "/");
+  }, [isLoggedIn]);
 
   return (
     <div className="profile">
@@ -24,18 +28,21 @@ const Profile = () => {
         alt="photo"
       />
       <div>
-      <label htmlFor="name">Name</label>
-      <input type="text" value={user?.name || ""} id="name" readOnly/>
+        <label htmlFor="name">Name</label>
+        <input type="text" value={user?.name || ""} id="name" readOnly />
       </div>
-<div>
-      <label htmlFor="">User Name</label>
-      <input type="text" value={user?.username  || ""} id="username" readOnly/>
-
+      <div>
+        <label htmlFor="">User Name</label>
+        <input
+          type="text"
+          value={user?.username || ""}
+          id="username"
+          readOnly
+        />
       </div>
-<div>
-      <label htmlFor="">Email</label>
-      <input type="email" value={user?.email  || ""} id="email" readOnly/>
-
+      <div>
+        <label htmlFor="">Email</label>
+        <input type="email" value={user?.email || ""} id="email" readOnly />
       </div>
 
       <button>Update</button>
