@@ -22,8 +22,6 @@ export const handleLogin = async ({ username, password }) => {
       toast.error(data.message, { position });
     } else {
       toast.success(data.message, { position });
-      localStorage.setItem("login",true)
-      localStorage.setItem("user",data.userId)
       setInterval(()=>window.location.href="/",2000)
     }
   } catch (error) {
@@ -93,8 +91,6 @@ export const logout = async () => {
     credentials:"include"
   });
 
-    localStorage.removeItem("login");
-    localStorage.removeItem("user");
     window.location.href = "/";
   
 };
