@@ -175,6 +175,9 @@ header i{
   display: none;
 }
 @media screen  and (max-width:480px) {
+  .blog-list{
+    padding-top: 5%;
+  }
   
   header ul{
     display: none;
