@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="login-form">
+    <div className="login-form ">
       <h1>Login</h1>
       <input type="text" onChange={(e) => setUserName(e.target.value)} placeholder="Enter your username" />
       

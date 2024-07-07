@@ -15,7 +15,7 @@ const SignUp = () => {
   const [photo, setPhoto] = useState(null);
 
   return (
-    <div className="login-form">
+    <div className="login-form ">
      
       <h1>Register</h1>
 

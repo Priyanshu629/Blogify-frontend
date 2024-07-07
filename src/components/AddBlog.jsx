@@ -21,7 +21,7 @@ const AddBlog = () => {
 
 
   return (
-    <div className="add-blog">
+    <div className="add-blog ">
       <h1>Write Blog</h1>
 
       <label htmlFor="image" className="image">

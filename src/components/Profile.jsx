@@ -17,7 +17,7 @@ const Profile = () => {
  },[isLoggedIn])
 
   return (
-    <div className="profile">
+    <div className="profile ">
       <h1>Your Profile</h1>
 
       <img

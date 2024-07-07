@@ -13,7 +13,7 @@ const Blogdetail = () => {
 
 
   return (
-    <div className="blog-details">
+    <div className="blog-details ">
       {isLoading && <p>Loading...</p>}
       <img src={(data?.blog?.image)?data?.blog?.image:"/blog-dummy-image.jpg"} alt="" />
       <h1>{data?.blog?.title}</h1>
