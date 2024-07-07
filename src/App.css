@@ -95,6 +95,7 @@ header ul{
   border: 1px solid;
 
 }
+
 .profile{
   width:50%;
   margin:15px auto;
@@ -178,7 +179,9 @@ header i{
   padding-top: 100px;
 }
 @media screen  and (max-width:480px) {
- 
+  .login-form p{
+    width: 100%;
+  }
   
   header ul{
     display: none;
