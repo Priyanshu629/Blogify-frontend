@@ -2,7 +2,7 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
- 
+  
 }
 
 html,
@@ -21,6 +21,7 @@ header {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  position: fixed;
  
 }
 
@@ -54,6 +55,7 @@ header ul{
 .blog-list {
   width: 100%;
   padding: 10px;
+  padding-top: 5%;
 }
 
 .blog {
@@ -206,5 +208,10 @@ header i{
 .photo{
   width: 200px;
   cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  
+  display:none
 }
 

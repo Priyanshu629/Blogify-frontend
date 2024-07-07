@@ -20,6 +20,7 @@ const BlogList = () => {
       {data?.blogs.map((blog) => (
         <Blog key={blog._id} {...blog} />
       ))}
+      
     </div>
   );
 };
