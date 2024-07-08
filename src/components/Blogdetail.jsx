@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import { getBlog } from "../utils/fetchData"
+import Loader from "./Loader"
 
 
 const Blogdetail = () => {
@@ -14,7 +15,7 @@ const Blogdetail = () => {
 
   return (
     <div className="blog-details ">
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loader/>}
       <img src={(data?.blog?.image)?data?.blog?.image:"/blog-dummy-image.jpg"} alt="" />
       <h1>{data?.blog?.title}</h1>
       <p>{data?.blog?.body}</p>
