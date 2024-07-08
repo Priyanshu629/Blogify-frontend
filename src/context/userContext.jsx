@@ -5,6 +5,8 @@ const userContext = createContext();
 const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
+  
+
 
   const checkCookie = async () => {
     const response = await fetch(

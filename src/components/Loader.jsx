@@ -1,10 +1,15 @@
-import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Loader = () => {
+  const location = useLocation();
+
   return (
     <div className="load-container">
       <div id="loader"></div>
-      <span>Loading blogs <br /> Please wait..</span>
+      <span>
+        Loading {location.pathname === "/" ? "blogs" : "blog details"} <br />{" "}
+        Please wait..
+      </span>
     </div>
   );
 };

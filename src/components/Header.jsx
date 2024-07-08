@@ -5,6 +5,8 @@ import { logout } from "../utils/auth";
 const Header = () => {
   const { isLoggedIn,setIsLoggedIn,setUserId } = useUser();
 
+  
+
   const toggleMenu=(e)=>{
     let menu = document.getElementById("hamburger")
 
@@ -27,8 +29,9 @@ const Header = () => {
       <Link to={"/"} className="logo">
         Blogify
       </Link>
-
+      
       <ul>
+      <button >Dark</button>
       <li>
         <Link to={"/"} className="link" >Home</Link>
       </li>
