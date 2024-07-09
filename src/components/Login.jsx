@@ -14,12 +14,25 @@ const Login = () => {
   return (
     <div className="login-form ">
       <h1>Login</h1>
-      <input type="text" onChange={(e) => setUserName(e.target.value)} placeholder="Enter your username" />
-      
-      <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password"/>
-      
-      <button onClick={() => mutate({ username, password })}>Submit</button>
-      <p>Do not have an account? <Link to={'/signup'}>Create Account</Link></p>
+      <input
+        type="text"
+        onChange={(e) => setUserName(e.target.value)}
+        placeholder="Enter your username"
+      />
+
+      <input
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter your password"
+      />
+
+      <button onClick={() => mutate({ username, password })}>Login</button>
+      <span>
+        <Link to={"/forget-password"}>Forget Password</Link>
+      </span>
+      <p>
+        Do not have an account? <Link to={"/signup"}>Create Account</Link>
+      </p>
       <Toaster />
     </div>
   );

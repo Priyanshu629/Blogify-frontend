@@ -11,6 +11,8 @@ import Profile from "./components/Profile.jsx";
 import Error from "./components/Error.jsx";
 import { UserProvider } from "./context/userContext.jsx";
 import AddBlog from "./components/AddBlog.jsx";
+import ForgetPassword from "./components/ForgetPassword.jsx";
+import ResetPassword from "./components/ResetPassword.jsx";
 
 const client = new QueryClient();
 const appRouter = createBrowserRouter([
@@ -41,6 +43,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/add-blog",
         element: <AddBlog />,
+      },
+      {
+        path: "/forget-password",
+        element: <ForgetPassword />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
       },
     ],
     errorElement: <Error />,

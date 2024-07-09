@@ -31,7 +31,7 @@ const Header = () => {
       </Link>
       
       <ul>
-      <button >Dark</button>
+      
       <li>
         <Link to={"/"} className="link" >Home</Link>
       </li>
