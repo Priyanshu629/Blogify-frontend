@@ -23,7 +23,6 @@ const ForgetPassword = () => {
         onClick={() => {
           if (email === "") return;
           mutate({ email });
-          setEmail("")
         }}
         
       >

@@ -28,8 +28,6 @@ const ResetPassword = () => {
       <button
         onClick={() => {
           mutate({ otp, newPassword });
-          setOTP("");
-          setNewPassword("");
         }}
       >
         Submit

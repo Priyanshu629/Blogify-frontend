@@ -18,6 +18,7 @@ const BlogList = () => {
 
   return (
     <div className="blog-list ">
+     
       {data?.blogs.map((blog) => (
         <Blog key={blog._id} {...blog} />
       ))}

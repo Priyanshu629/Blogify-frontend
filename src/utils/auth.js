@@ -94,6 +94,7 @@ export const logout = async (setIsLoggedIn, setUserId) => {
 };
 
 export const forgetPassword = async ({ email }) => {
+  
   const response = await fetch(
     USER_BACKEND_URL+"forget-password",
     {

@@ -2,7 +2,6 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  
 }
 
 html,
@@ -10,7 +9,6 @@ body {
   width: 100%;
   height: 100vh;
   background-color: azure;
- 
 }
 
 header {
@@ -22,31 +20,27 @@ header {
   align-items: center;
   flex-wrap: wrap;
   position: fixed;
- 
 }
 
-
-
-.link{
+.link {
   text-decoration: none;
-  color: white;
+  color: rgb(18, 1, 1);
   font-size: 18px;
   margin: 10px 15px;
-  background-color: goldenrod;
+  background-color: rgb(240, 224, 186);
   padding: 5px 15px;
   border-radius: 5px;
-
-  
 }
-#logout{
+#logout {
   padding: 5px;
 }
-header ul{
+header ul {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
+  align-items: center;
 }
-.logo{
+.logo {
   font-size: 30px;
   color: white;
   text-decoration: none;
@@ -55,61 +49,57 @@ header ul{
 .blog-list {
   width: 100%;
   padding: 10px;
-  
 }
 
 .blog {
   display: flex;
   flex-direction: column;
   width: 50%;
-  background-color: rgb(171, 172, 172);
+  background-color: rgb(190, 250, 250);
   padding: 10px;
   margin: 10px auto;
   border-radius: 5px;
 }
-.login-form{
+.login-form {
   width: 25%;
   padding: 10px;
-  margin:  auto;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid;
   background-color: rgb(161, 228, 231);
-  
 }
-.login-form input{
+.login-form input {
   width: 100%;
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
 }
-.login-form button{
+.login-form button {
   padding: 10px 15px;
   background-color: greenyellow;
   border: none;
   cursor: pointer;
-
 }
-.login-form button:hover{
+.login-form button:hover {
   border: 1px solid;
-
 }
 
-.profile{
-  width:50%;
-  margin:15px auto;
+.profile {
+  width: 50%;
+  margin: 15px auto;
   padding: 20px;
   border: 1px solid;
 }
-.profile input{
+.profile input {
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
   width: 100%;
 }
 
-.add-blog{
+.add-blog {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,25 +107,31 @@ header ul{
   margin: 15px auto;
   padding: 10px;
 }
-.add-blog input , textarea{
+.add-blog input,
+textarea {
   width: 100%;
   margin: 10px;
   padding: 10px;
 }
 
-#blog-delete{
+.blog-delete {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: rgb(222, 222, 252);
 }
-#blog-delete button{
+.blog-delete button {
   padding: 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
   background: rgb(253, 32, 32);
   color: white;
+  margin: 10px 0;
 }
-.image{
+.image {
   width: 100%;
   text-align: center;
   padding: 10px;
@@ -143,123 +139,117 @@ header ul{
   background-color: greenyellow;
   cursor: pointer;
 }
-.blog-details{
-  width: 50%;
+.blog-details {
+  width: 70%;
   margin: 15px auto;
+  padding: 10px;
 }
-.blog-details img{
-  /* width: 500px; */
-  width: 100%;
-  
+.blog-details img {
+  width: 300px;
 }
 
-#hamburger{
+#hamburger {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  display:none
- 
+  display: none;
 }
-header i{
+header i {
   color: white;
   border: 1px solid;
   padding: 10px;
-  background-color: rgb(112, 9, 9);
+  font-size: 20px;
+  font-weight: bold;
   border-radius: 5px;
   display: none;
 }
-#hamburger li{
+
+#hamburger li {
   margin: 10px;
 }
-.active{
+.active {
   display: none;
 }
-.space-top{
+.space-top {
   padding-top: 100px;
   height: 100vh;
 }
-@media screen  and (max-width:480px) {
-  .login-form p{
+#posted {
+  margin: 10px 0;
+  color: brown;
+}
+@media screen and (max-width: 480px) {
+  .login-form p {
     width: 100%;
   }
-  
-  header ul{
+
+  header ul {
     display: none;
   }
-  #hamburger{
+  #hamburger {
     display: none;
   }
-  header i{
+  header i {
     display: block;
   }
-  
-  .login-form{
-    width: 90%;
-  }
-  .blog{
-    width: 90%;
-  }
-  .profile{
-    width: 90%;
-  }
-  .add-blog{
-    width: 90%;
-  }
-  .blog-details{
-    width: 90%;
-  }
 
-  
+  .login-form {
+    width: 90%;
+  }
+  .blog {
+    width: 90%;
+  }
+  .profile {
+    width: 90%;
+  }
+  .add-blog {
+    width: 90%;
+  }
+  .blog-details {
+    width: 90%;
+  }
 }
 
-.photo{
+.photo {
   width: 200px;
   cursor: pointer;
 }
 
 ::-webkit-scrollbar {
-  
-  display:none
+  display: none;
 }
 
 /* loader */
-#loader{
+#loader {
   position: absolute;
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border:  5px solid azure ;
+  border: 5px solid azure;
   border-top-color: black;
   animation: spinner 1s linear infinite;
 }
 @keyframes spinner {
-  0%{
-      transform: (0deg);
-      /* box-shadow: 1px 5px 2px red; */
-  }
-  
-  100%{
-      transform: rotate(360deg);
-      /* box-shadow: 1px 5px 2px red; */
+  0% {
+    transform: (0deg);
+    /* box-shadow: 1px 5px 2px red; */
   }
 
-
+  100% {
+    transform: rotate(360deg);
+    /* box-shadow: 1px 5px 2px red; */
+  }
 }
- #loader span{
+#loader span {
   color: black;
   font-size: 20px;
 }
 
-.load-container{
- width: 100%;
- display: flex;
- justify-content: center;
- align-items: center;
- margin-top: 250px;
-  
+.load-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 250px;
 }
-
-
-
-

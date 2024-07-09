@@ -29,7 +29,7 @@ const Header = () => {
       <Link to={"/"} className="logo">
         Blogify
       </Link>
-      
+     
       <ul>
       
       <li>
@@ -69,7 +69,7 @@ const Header = () => {
           </>
         )}
       </ul>
-<>     <i onClick={toggleMenu}>Menu</i>
+<>     <i onClick={toggleMenu}>☰</i>
       <ul id="hamburger" >
       <li>
         <Link to={"/"} className="link" onClick={toggleLink}>Home</Link>
