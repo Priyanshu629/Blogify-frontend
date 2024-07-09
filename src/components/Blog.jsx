@@ -10,6 +10,8 @@ const Blog = ({ _id, title, body, image, createdAt, updatedAt, postedBy }) => {
         Posted On : {createDate.toDateString()} at{" "}
         {createDate.toLocaleTimeString("en-US",{
           hour12: true,
+          hour: "numeric",
+          minute: "numeric"
         })}
       </span>
 
