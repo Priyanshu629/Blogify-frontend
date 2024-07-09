@@ -95,7 +95,7 @@ export const logout = async (setIsLoggedIn, setUserId) => {
 
 export const forgetPassword = async ({ email }) => {
   const response = await fetch(
-    "http://localhost:5000/api/v1/user/forget-password",
+    USER_BACKEND_URL+"forget-password",
     {
       method: "POST",
       headers: {
@@ -120,7 +120,7 @@ export const forgetPassword = async ({ email }) => {
 export const resetPassword = async ({ otp, newPassword }) => {
   console.log(otp);
   const response = await fetch(
-    "http://localhost:5000/api/v1/user/reset-password",
+    USER_BACKEND_URL+"reset-password",
     {
       method: "POST",
       headers: {
