@@ -4,14 +4,11 @@ import { useMutation } from "@tanstack/react-query";
 import { resetPassword } from "../utils/auth";
 
 const ResetPassword = () => {
-  
   const [otp, setOTP] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const { mutate } = useMutation({
     mutationFn: ({ otp, newPassword }) => resetPassword({ otp, newPassword }),
   });
-
-  
 
   return (
     <div className="login-form">
@@ -28,7 +25,15 @@ const ResetPassword = () => {
         placeholder="Enter new password"
       />
 
-      <button onClick={() => mutate({ otp, newPassword })}>Submit</button>
+      <button
+        onClick={() => {
+          mutate({ otp, newPassword });
+          setOTP("");
+          setNewPassword("");
+        }}
+      >
+        Submit
+      </button>
 
       <Toaster />
     </div>
