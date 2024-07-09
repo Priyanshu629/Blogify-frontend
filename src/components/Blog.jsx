@@ -8,7 +8,9 @@ const Blog = ({ _id, title, body, image, createdAt, updatedAt, postedBy }) => {
     <div className="blog">
       <span id="posted">
         Posted On : {createDate.toDateString()} at{" "}
-        {createDate.toLocaleTimeString()}
+        {createDate.toLocaleTimeString("en-US",{
+          hour12: true,
+        })}
       </span>
 
       <img
