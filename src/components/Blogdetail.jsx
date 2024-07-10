@@ -42,6 +42,7 @@ const Blogdetail = () => {
               data?.blog?.image ? data?.blog?.image : "/blog-dummy-image.jpg"
             }
             alt=""
+            loading="lazy"
           />
           <h1>{data?.blog?.title}</h1>
           <p>{data?.blog?.body}</p>

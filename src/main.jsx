@@ -1,18 +1,19 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import BlogList from "./components/BlogList.jsx";
-import Blogdetail from "./components/Blogdetail.jsx";
 import Login from "./components/Login.jsx";
 import SignUp from "./components/SignUp.jsx";
-import Profile from "./components/Profile.jsx";
 import Error from "./components/Error.jsx";
 import { UserProvider } from "./context/userContext.jsx";
 import AddBlog from "./components/AddBlog.jsx";
 import ForgetPassword from "./components/ForgetPassword.jsx";
 import ResetPassword from "./components/ResetPassword.jsx";
+import Home from "./components/Home.jsx";
+const BlogList = lazy(() => import("./components/BlogList.jsx"));
+const Blogdetail = lazy(() => import("./components/Blogdetail.jsx"));
+const Profile=lazy(()=>import("./components/Profile.jsx"))
 
 const client = new QueryClient();
 const appRouter = createBrowserRouter([
@@ -22,7 +23,11 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <BlogList />,
+        element: <Home />,
+      },
+      {
+        path: "/blogs",
+        element: <Suspense><BlogList /></Suspense>,
       },
       {
         path: "/login",
@@ -30,7 +35,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: <Suspense><Profile /></Suspense>,
       },
       {
         path: "/signup",
@@ -38,7 +43,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/blog/:blogId",
-        element: <Blogdetail />,
+        element: <Suspense><Blogdetail /></Suspense>,
       },
       {
         path: "/add-blog",

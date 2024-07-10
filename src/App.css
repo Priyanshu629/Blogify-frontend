@@ -13,7 +13,6 @@ body {
 
 header {
   width: 100%;
-  background-color: slateblue;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -42,7 +41,7 @@ header ul {
 }
 .logo {
   font-size: 30px;
-  color: white;
+  color: rgb(19, 11, 11);
   text-decoration: none;
 }
 
@@ -154,6 +153,7 @@ textarea {
   flex-direction: column;
   align-items: center;
   display: none;
+  background-color: grey;
 }
 header i {
   color: white;
@@ -163,6 +163,7 @@ header i {
   font-weight: bold;
   border-radius: 5px;
   display: none;
+  background-color: black;
 }
 
 #hamburger li {
@@ -178,6 +179,33 @@ header i {
 #posted {
   margin: 10px 0;
   color: brown;
+}
+#home{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./background-image.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.cat-container{
+  margin-top: 20px;
+}
+.cta{
+  margin: 10px;
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+#home p{
+  color: rgb(1, 71, 1);
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 15px;
 }
 @media screen and (max-width: 480px) {
   .login-form p {
@@ -209,6 +237,7 @@ header i {
   .blog-details {
     width: 90%;
   }
+  
 }
 
 .photo {

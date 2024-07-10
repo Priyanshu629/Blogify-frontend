@@ -19,6 +19,7 @@ const Blog = ({ _id, title, body, image, createdAt, updatedAt, postedBy }) => {
         className="photo"
         src={image ? image : "/blog-dummy-image.jpg"}
         alt="photo"
+        loading="lazy"
       />
       <h1>{title}</h1>
       <Link to={`/blog/${_id}`}>Read ➡️</Link>

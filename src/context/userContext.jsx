@@ -6,6 +6,7 @@ const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
   const [onPage,setOnPage]= useState(false)
+  const [username,setUsername]=useState("")
   
 
 
@@ -21,10 +22,12 @@ const UserProvider = ({ children }) => {
 
     if (response.status === 200) {
       setIsLoggedIn(true);
-      setUserId(data.userId);
+      setUserId(data?.userId);
+      setUsername(data?.username)
     } else {
       setIsLoggedIn(false);
       setUserId(null);
+      setUsername("")
     }
   };
   useEffect(() => {
@@ -33,7 +36,7 @@ const UserProvider = ({ children }) => {
 
   return (
     <userContext.Provider
-      value={{ isLoggedIn, userId, setIsLoggedIn, setUserId ,onPage,setOnPage}}
+      value={{ isLoggedIn, userId, setIsLoggedIn, setUserId ,onPage,setOnPage,username}}
     >
       {children}
     </userContext.Provider>

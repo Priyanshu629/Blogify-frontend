@@ -24,7 +24,7 @@ export const handleLogin = async ({ username, password }) => {
       setInterval(() => (window.location.href = "/"), 2000);
     }
   } catch (error) {
-    console.log(error);
+    
     return { error: error.message };
   }
 };
@@ -64,7 +64,7 @@ export const handleSignUp = async ({
       return setInterval(() => (window.location.href = "/"), 2000);
     }
   } catch (error) {
-    console.log(error);
+    
     return { error: error.message };
   }
 };

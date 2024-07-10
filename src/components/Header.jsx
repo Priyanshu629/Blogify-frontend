@@ -7,7 +7,7 @@ const Header = () => {
 
   
 
-  const toggleMenu=(e)=>{
+  const toggleMenu=()=>{
     let menu = document.getElementById("hamburger")
 
      if(menu.style.display==="none"){
@@ -60,11 +60,7 @@ const Header = () => {
                 Login
               </Link>
             </li>
-            <li>
-              <Link to="/signup" className="link">
-                SignUp
-              </Link>
-            </li>
+           
             
           </>
         )}
@@ -102,11 +98,7 @@ const Header = () => {
                 Login
               </Link>
             </li>
-            <li>
-              <Link to="/signup" className="link" onClick={toggleLink}>
-                SignUp
-              </Link>
-            </li>
+            
             
           </>
         )}
