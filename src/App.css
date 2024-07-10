@@ -187,7 +187,7 @@ header i {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url(./background-image.webp);
+  background-image: url(/background-image.webp);
   background-size: cover;
   background-repeat: no-repeat;
 }
