@@ -8,7 +8,7 @@ const UserProvider = ({ children }) => {
   const [onPage,setOnPage]= useState(false)
   const [username,setUsername]=useState("")
   
-
+   
 
   const checkCookie = async () => {
     const response = await fetch(
