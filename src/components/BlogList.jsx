@@ -17,7 +17,7 @@ const BlogList = () => {
   }
 
   return (
-    <div className="blog-list ">
+    <div className="w-[95%] p-2 my-3 flex flex-wrap mx-auto">
      
       {data?.blogs.map((blog) => (
         <Blog key={blog._id} {...blog} />

@@ -19,35 +19,49 @@ const AddBlog = () => {
     }
   }, [isLoggedIn]);
 
-
   return (
-    <div className="add-blog ">
-      <h1>Write Blog</h1>
+    <div className="max-w-3xl mx-auto p-6 bg-white my-4 border-2 shadow-lg rounded-lg">
+      <h1 className="text-2xl font-semibold text-center mb-6">Write Blog</h1>
 
-      <label htmlFor="image" className="image">
-        {image ? image.name : "Choose Image for your blog + (*optional)"}
-      </label>
-      <input
-        type="file"
-        onChange={(e) => setImage(e.target.files[0])}
-        hidden
-        id="image"
-      />
+      <div className="mb-4">
+        <label htmlFor="image" className="text-gray-700 font-medium block border-2 p-2 cursor-pointer hover:border-green-400">
+          {image ? image.name : "Choose Image for your blog + (*optional)"}
+        </label>
+        <input
+          type="file"
+          onChange={(e) => setImage(e.target.files[0])}
+          hidden
+          id="image"
+          className="mt-2"
+        />
+      </div>
 
-      <input
-        type="text"
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Enter Title"
-      />
-      <textarea
-        rows={"8"}
-        name=""
-        id="text-area"
-        placeholder="Enter Body"
-        onChange={(e) => setBody(e.target.value)}
-      ></textarea>
+      <div className="mb-4">
+        <input
+          type="text"
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Enter Title"
+          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
 
-      <button onClick={() => mutate({ title, body, image })}>Submit</button>
+      <div className="mb-4">
+        <textarea
+          rows="8"
+          name=""
+          id="text-area"
+          placeholder="Enter Body"
+          onChange={(e) => setBody(e.target.value)}
+          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        ></textarea>
+      </div>
+
+      <button
+        onClick={() => mutate({ title, body, image })}
+        className="w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200"
+      >
+        Submit
+      </button>
 
       <Toaster />
     </div>

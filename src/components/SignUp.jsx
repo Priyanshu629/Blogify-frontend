@@ -15,13 +15,13 @@ const SignUp = () => {
   const [photo, setPhoto] = useState(null);
 
   return (
-    <div className="login-form ">
+    <div className="w-[40%] flex flex-col mx-auto my-4 border-4 border-cyan-500 p-2 max-sm:w-[90%] ">
      
-      <h1>Register</h1>
+     <h1 className="font-bold text-center bg-violet-500 p-2 text-white text-xl">Register Yourself</h1>
 
       <label htmlFor="photo">
         <img
-          className="photo"
+          className="w-[35%] mx-auto cursor-pointer"
           src={
             photo
               ? URL.createObjectURL(photo)
@@ -36,35 +36,40 @@ const SignUp = () => {
         id="photo"
         hidden
         onChange={(e) => setPhoto(e.target.files[0])}
+        
       />
 
       <input
         type="text"
         onChange={(e) => setName(e.target.value)}
         placeholder="Enter your name"
+        className="w-full border-2 border-black p-2 rounded-md my-2"
       />
 
       <input
         type="text"
         onChange={(e) => setUserName(e.target.value)}
         placeholder="Enter your username"
+        className="w-full border-2 border-black p-2 rounded-md my-2"
       />
 
       <input
         type="email"
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter your email"
+        className="w-full border-2 border-black p-2 rounded-md my-2"
       />
 
       <input
         type="password"
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Enter your password"
+        className="w-full border-2 border-black p-2 rounded-md my-2"
       />
 
-      <button onClick={() => mutate({ photo,username, password,name,email })}>Submit</button>
-      <p>
-        Already have an account? <Link to={"/login"}>Login</Link>
+      <button className="bg-green-500 font-bold p-2 rounded-md hover:bg-green-800 text-white text-lg" onClick={() => mutate({ photo,username, password,name,email })}>Submit</button>
+      <p className="my-2">
+        Already have an account? <Link to={"/login"} className="underline text-blue-600 font-bold">Login</Link>
       </p>
       <Toaster />
     </div>

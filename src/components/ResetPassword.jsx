@@ -11,21 +11,24 @@ const ResetPassword = () => {
   });
 
   return (
-    <div className="login-form">
-      <h1>Reset Password</h1>
+    <div className="w-[25%] border-2 border-black p-2 mx-auto rounded-md flex flex-col bg-teal-400 my-6">
+      <h1 className="bg-violet-700 text-white p-2 font-bold text-center ">Reset Password</h1>
       <input
         type="text"
         onChange={(e) => setOTP(e.target.value)}
         placeholder="Enter OTP"
+        className="my-4 w-full p-2 border-2 border-gray-600"
       />
 
       <input
         type="password"
         onChange={(e) => setNewPassword(e.target.value)}
         placeholder="Enter new password"
+        className="my-4 w-full p-2 border-2 border-gray-600"
       />
 
       <button
+       className="bg-pink-700 hover:bg-pink-500 text-white text-center p-2"
         onClick={() => {
           mutate({ otp, newPassword });
         }}

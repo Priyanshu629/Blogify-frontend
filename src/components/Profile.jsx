@@ -4,24 +4,26 @@ import { useUser } from "../context/userContext";
 import { useEffect } from "react";
 
 const Profile = () => {
-  const {isLoggedIn}=useUser()
+  const { isLoggedIn } = useUser()
   const { data: user } = useQuery({
     queryKey: ["profile"],
     queryFn: getProfile,
   });
+
   
- useEffect(()=>{
-  if(isLoggedIn===false){
-    return window.location.href="/"
- } 
- },[isLoggedIn])
+
+  useEffect(() => {
+    if (isLoggedIn === false) {
+      return window.location.href = "/"
+    }
+  }, [isLoggedIn])
 
   return (
-    <div className="profile ">
-      <h1>Your Profile</h1>
+    <div className="w-[100%] p-2 bg-slate-600  flex flex-col items-center my-4 border-2 ">
+     
 
       <img
-        className="photo"
+        className="w-[20%] max-md:w-[50%] rounded-full"
         src={
           user?.photo
             ? user?.photo
@@ -30,25 +32,26 @@ const Profile = () => {
         alt="photo"
         loading="lazy"
       />
-      <div>
-        <label htmlFor="name">Name</label>
-        <input type="text" value={user?.name || ""} id="name" readOnly />
-      </div>
-      <div>
-        <label htmlFor="">User Name</label>
+      <section className="flex flex-col my-4 font-bold items-start border-2 border-black p-2 rounded-md">
+
+
+        <input className="w-[100%] p-2 my-2 text-lg text-violet-700" type="text" value={user?.name || ""} id="name" readOnly />
+
+
         <input
           type="text"
           value={user?.username || ""}
           id="username"
           readOnly
+          className="w-[100%] my-2 text-lg p-2 text-violet-700"
         />
-      </div>
-      <div>
-        <label htmlFor="">Email</label>
-        <input type="email" value={user?.email || ""} id="email" readOnly />
-      </div>
 
-      <button>Update</button>
+
+        <input type="email" value={user?.email || ""} id="email" readOnly className="w-[100%] my-2 text-lg text-violet-700 p-2" />
+
+      </section>
+
+
     </div>
   );
 };

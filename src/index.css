@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.load-container{
+    width: 90%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#loader {
+    
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    border-top: 8px solid black;
+    border-left: 8px solid black;
+    border-right: 8px solid black;
+    animation: loader 1s linear infinite;
+    border-bottom: 8px solid transparent; 
+}
+
+@keyframes loader {
+    100% {
+        transform: rotate(360deg);
+    }
+}

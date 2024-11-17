@@ -11,6 +11,7 @@ import AddBlog from "./components/AddBlog.jsx";
 import ForgetPassword from "./components/ForgetPassword.jsx";
 import ResetPassword from "./components/ResetPassword.jsx";
 import Home from "./components/Home.jsx";
+
 const BlogList = lazy(() => import("./components/BlogList.jsx"));
 const Blogdetail = lazy(() => import("./components/Blogdetail.jsx"));
 const Profile=lazy(()=>import("./components/Profile.jsx"))

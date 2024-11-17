@@ -1,14 +1,13 @@
-import { useLocation } from "react-router-dom";
+
 
 const Loader = () => {
-  const location = useLocation();
+  
 
   return (
-    <div className="load-container">
+    <div className="load-container relative">
       <div id="loader"></div>
-      <span>
-        Loading {location.pathname === "/" ? "blogs" : "blog details"} <br />{" "}
-        Please wait..
+      <span className="absolute top-[100px] font-bold">
+        Loading Please wait..
       </span>
     </div>
   );

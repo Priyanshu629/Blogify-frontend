@@ -11,15 +11,18 @@ const ForgetPassword = () => {
   });
 
   return (
-    <div className="login-form ">
-      <h3>Enter Your Email</h3>
+    
+    <div className="w-[25%] border-2 border-black p-2 mx-auto rounded-md flex flex-col bg-teal-400 my-6">
+      <h3 className="bg-violet-700 text-white p-2 font-bold text-center ">Enter Your Email</h3>
       <input
         type="text"
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
         required
+        className="my-4 w-full p-2 border-2 border-gray-600"
+        placeholder="Email Id For OTP"
       />
       <button
+      className="bg-pink-700 hover:bg-pink-500 text-white text-center p-2"
         onClick={() => {
           if (email === "") return;
           mutate({ email });
@@ -30,6 +33,7 @@ const ForgetPassword = () => {
       </button>
       <Toaster />
     </div>
+    
   );
 };
 
