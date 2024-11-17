@@ -28,27 +28,19 @@ export const handleLogin = async ({ username, password }) => {
     return { error: error.message };
   }
 };
-export const handleSignUp = async ({
-  photo,
-  username,
-  password,
-  name,
-  email,
-}) => {
+export const handleSignUp = async (name,username,email,password,profilePicture) => {
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append("username", username);
+  formData.append("email", email);
+  formData.append("password", password);
+  formData.append("photo", profilePicture);
+  
   try {
-    const user = new FormData();
-    user.append("username", username);
-    user.append("name", name);
-    user.append("email", email);
-    user.append("password", password);
-
-    if (photo) {
-      user.append("photo", photo);
-    }
 
     const response = await fetch(USER_BACKEND_URL + "register", {
       method: "POST",
-      body: user,
+      body: formData,
       credentials: "include",
     });
 
@@ -61,7 +53,7 @@ export const handleSignUp = async ({
       return toast.error(data.message, { position });
     } else {
       toast.success(data.message, { position });
-      return setInterval(() => (window.location.href = "/"), 2000);
+      return setTimeout(() => (window.location.href = "/"), 2000);
     }
   } catch (error) {
     

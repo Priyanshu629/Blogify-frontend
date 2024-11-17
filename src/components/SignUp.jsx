@@ -5,29 +5,35 @@ import { Toaster, toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
+  const [name,setName]=useState("")
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [profilePicture, setProfilePicture] = useState(null);
 
   const { mutate, isLoading } = useMutation({
-    mutationFn: ({ username, email, password }) =>
-      handleSignUp({ username, email, password }),
-    onSuccess: () => {
-      toast.success("Signup successful!");
-    },
-    onError: (error) => {
-      toast.error(error.message || "Signup failed. Please try again.");
-    },
+    mutationFn: (formData) => handleSignUp(formData),
   });
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      setProfilePicture(file);
+    } else {
+      toast.error("Please upload a valid image file.");
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!username || !email || !password) {
-      toast.error("All fields are required!");
+    if (!username || !email || !password || !profilePicture) {
+      toast.error("All fields, including a profile picture, are required!");
       return;
     }
-    mutate({ username, email, password });
+
+  
+    mutate(name,username,email,password,profilePicture);
   };
 
   return (
@@ -36,6 +42,21 @@ const Signup = () => {
         Create Your Account
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col">
+
+      <label htmlFor="username" className="font-medium my-2">
+          Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          aria-label="name"
+          placeholder="Enter your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="w-full p-2 border-2 border-gray-500"
+          required
+        />
+
         <label htmlFor="username" className="font-medium my-2">
           Username
         </label>
@@ -87,6 +108,19 @@ const Signup = () => {
             {showPassword ? "Hide" : "Show"}
           </button>
         </div>
+
+        <label htmlFor="profilePicture" className="font-medium my-2">
+          Profile Picture
+        </label>
+        <input
+          type="file"
+          id="profilePicture"
+          aria-label="Profile Picture"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="w-full p-2 border-2 border-gray-500"
+          required
+        />
 
         <button
           type="submit"
