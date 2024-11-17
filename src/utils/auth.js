@@ -28,7 +28,9 @@ export const handleLogin = async ({ username, password }) => {
     return { error: error.message };
   }
 };
-export const handleSignUp = async (name,username,email,password,profilePicture) => {
+export const handleSignUp = async ({name,username,email,password,profilePicture}) => {
+  //  console.log(name,username,email,profilePicture,password);
+   
   const formData = new FormData();
   formData.append('name', name);
   formData.append("username", username);

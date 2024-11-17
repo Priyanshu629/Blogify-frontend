@@ -33,7 +33,7 @@ const Signup = () => {
     }
 
   
-    mutate(name,username,email,password,profilePicture);
+    mutate({name,username,email,password,profilePicture});
   };
 
   return (
