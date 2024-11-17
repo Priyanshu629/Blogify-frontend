@@ -44,6 +44,7 @@ const SignUp = () => {
         onChange={(e) => setName(e.target.value)}
         placeholder="Enter your name"
         className="w-full border-2 border-black p-2 rounded-md my-2"
+        required
       />
 
       <input
@@ -51,6 +52,7 @@ const SignUp = () => {
         onChange={(e) => setUserName(e.target.value)}
         placeholder="Enter your username"
         className="w-full border-2 border-black p-2 rounded-md my-2"
+        required
       />
 
       <input
@@ -58,6 +60,7 @@ const SignUp = () => {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter your email"
         className="w-full border-2 border-black p-2 rounded-md my-2"
+        required
       />
 
       <input
@@ -65,6 +68,7 @@ const SignUp = () => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Enter your password"
         className="w-full border-2 border-black p-2 rounded-md my-2"
+        required
       />
 
       <button className="bg-green-500 font-bold p-2 rounded-md hover:bg-green-800 text-white text-lg" onClick={() => mutate({ photo,username, password,name,email })}>Submit</button>
