@@ -1,83 +1,111 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import {handleSignUp} from "../utils/auth"
-import { Toaster } from "react-hot-toast";
+import { handleSignUp } from "../utils/auth";
+import { Toaster, toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-const SignUp = () => {
-  const { mutate ,isSuccess} = useMutation({
-    mutationFn: ({ photo,username, password,name,email }) => handleSignUp({ photo,username, password,name,email }),
-  });
-  const [name,setName]=useState("")
-  const [email,setEmail]=useState("")
-  const [username, setUserName] = useState("");
+const Signup = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [photo, setPhoto] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const { mutate, isLoading } = useMutation({
+    mutationFn: ({ username, email, password }) =>
+      handleSignUp({ username, email, password }),
+    onSuccess: () => {
+      toast.success("Signup successful!");
+    },
+    onError: (error) => {
+      toast.error(error.message || "Signup failed. Please try again.");
+    },
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!username || !email || !password) {
+      toast.error("All fields are required!");
+      return;
+    }
+    mutate({ username, email, password });
+  };
 
   return (
-    <div className="w-[40%] flex flex-col mx-auto my-4 border-4 border-cyan-500 p-2 max-sm:w-[90%] ">
-     
-     <h1 className="font-bold text-center bg-violet-500 p-2 text-white text-xl">Register Yourself</h1>
-
-      <label htmlFor="photo">
-        <img
-          className="w-[35%] mx-auto cursor-pointer"
-          src={
-            photo
-              ? URL.createObjectURL(photo)
-              : "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?size=338&ext=jpg&ga=GA1.1.2113030492.1719964800&semt=ais_user"
-          }
-          alt="photo"
+    <div className="w-[40%] max-sm:w-[90%] flex flex-col mx-auto my-4 border-2 border-black p-4">
+      <h1 className="font-bold text-center bg-violet-500 p-2 text-white text-xl">
+        Create Your Account
+      </h1>
+      <form onSubmit={handleSubmit} className="flex flex-col">
+        <label htmlFor="username" className="font-medium my-2">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          aria-label="Username"
+          placeholder="Enter your username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="w-full p-2 border-2 border-gray-500"
+          required
         />
-      </label>
 
-      <input
-        type="file"
-        id="photo"
-        hidden
-        onChange={(e) => setPhoto(e.target.files[0])}
-        
-      />
+        <label htmlFor="email" className="font-medium my-2">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          aria-label="Email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full p-2 border-2 border-gray-500"
+          required
+        />
 
-      <input
-        type="text"
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter your name"
-        className="w-full border-2 border-black p-2 rounded-md my-2"
-        required
-      />
+        <label htmlFor="password" className="font-medium my-2">
+          Password
+        </label>
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password"
+            aria-label="Password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-2 border-2 border-gray-500"
+            required
+            minLength="6"
+          />
+          <button
+            type="button"
+            className="absolute right-3 top-3 text-gray-600"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        </div>
 
-      <input
-        type="text"
-        onChange={(e) => setUserName(e.target.value)}
-        placeholder="Enter your username"
-        className="w-full border-2 border-black p-2 rounded-md my-2"
-        required
-      />
+        <button
+          type="submit"
+          className="bg-green-950 hover:bg-green-800 text-white p-2 my-4 text-lg"
+          disabled={isLoading}
+        >
+          {isLoading ? "Signing up..." : "Sign Up"}
+        </button>
+      </form>
 
-      <input
-        type="email"
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
-        className="w-full border-2 border-black p-2 rounded-md my-2"
-        required
-      />
-
-      <input
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Enter your password"
-        className="w-full border-2 border-black p-2 rounded-md my-2"
-        required
-      />
-
-      <button className="bg-green-500 font-bold p-2 rounded-md hover:bg-green-800 text-white text-lg" onClick={() => mutate({ photo,username, password,name,email })}>Submit</button>
-      <p className="my-2">
-        Already have an account? <Link to={"/login"} className="underline text-blue-600 font-bold">Login</Link>
+      <p>
+        Already have an account?{" "}
+        <Link className="underline font-bold text-blue-500" to="/login">
+          Login
+        </Link>
       </p>
       <Toaster />
     </div>
   );
 };
 
-export default SignUp;
+export default Signup;
