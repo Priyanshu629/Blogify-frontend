@@ -12,7 +12,7 @@ const ForgetPassword = () => {
 
   return (
     
-    <div className="w-[25%] border-2 border-black p-2 mx-auto rounded-md flex flex-col bg-teal-400 my-6">
+    <div className="w-[25%] max-sm:w-[90%] border-2 border-black p-2 mx-auto rounded-md flex flex-col bg-teal-400 my-6">
       <h3 className="bg-violet-700 text-white p-2 font-bold text-center ">Enter Your Email</h3>
       <input
         type="text"
