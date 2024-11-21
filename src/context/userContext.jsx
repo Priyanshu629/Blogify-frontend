@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import {BLOG_BACKEND_URL,CHECK_URL} from "../utils/constants"
 
 const userContext = createContext();
 
@@ -12,7 +13,7 @@ const UserProvider = ({ children }) => {
 
   
    const myBlogs = async ()=>{
-    const response = await fetch("http://localhost:5000/api/v1/blog/my-blogs",{
+    const response = await fetch(BLOG_BACKEND_URL+"my-blogs",{
       method: "GET",
       credentials: "include"
     })
@@ -24,7 +25,7 @@ const UserProvider = ({ children }) => {
 
   const checkCookie = async () => {
     const response = await fetch(
-      "http://localhost:5000/api/v1/check",
+      CHECK_URL,
       {
         method: "GET",
         credentials: "include",
