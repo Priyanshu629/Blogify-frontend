@@ -4,7 +4,7 @@ import { useUser } from "../context/userContext";
 const Home = () => {
   const { username } = useUser();
   return (
-    <div  className="max-sm:w-[95%]  w-[80%] p-2 flex flex-col justify-between  my-4  mx-auto">
+    <div  className="max-sm:w-[95%]  w-[80%] p-2 flex flex-col justify-between    mx-auto">
 
 
       <aside className="mx-2  text-center">

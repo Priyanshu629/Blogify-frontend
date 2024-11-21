@@ -1,6 +1,16 @@
+
+
+
 header ul li{
     margin: 0 10px;
     padding: 5px;
     border-radius: 5px;
 }
 
+.action button{
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: wheat;
+}

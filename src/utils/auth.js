@@ -83,6 +83,7 @@ export const logout = async (setIsLoggedIn, setUserId) => {
     credentials: "include",
   });
   toast.success("log out succefully", { position: "top-center" });
+  
   setIsLoggedIn(false);
   setUserId(null);
 };

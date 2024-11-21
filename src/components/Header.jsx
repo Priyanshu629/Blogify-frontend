@@ -4,9 +4,11 @@ import { logout } from "../utils/auth";
 import { useState } from "react";
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn, setUserId } = useUser();
+  const { isLoggedIn, setIsLoggedIn, setUserId, photo } = useUser();
   const [profileMenu, setProfileMenu] = useState(false);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
+
+
 
   const toggleProfileMenu = () => {
     setProfileMenu((prev) => !prev);
@@ -17,13 +19,13 @@ const Header = () => {
   };
 
   return (
-    <header className="flex w-full justify-between px-4 h-20 bg-blue-800 items-center text-xl text-white font-semibold relative">
+    <header className="flex w-full justify-between px-4 h-20 bg-blue-900 items-center text-xl text-white font-semibold relative">
       <Link to="/" className="text-2xl font-bold">
         Blogify
       </Link>
 
       {/* Desktop Menu */}
-      <ul className="hidden md:flex space-x-4">
+      <ul className="hidden md:flex space-x-4 items-center">
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -36,9 +38,8 @@ const Header = () => {
               <Link to="/add-blog">Write Blog</Link>
             </li>
             <li>
-              <button
-                onClick={toggleProfileMenu}
-              >Account</button>
+              
+              <img onClick={toggleProfileMenu} src={photo} alt="user-photo" className="w-[50px] rounded-full cursor-pointer hover:border-4 hover:border-green-500 transition-all" />
             </li>
             <div
               className={`absolute top-16 right-4 bg-green-600 rounded shadow-md p-4 flex flex-col items-center space-y-2 transition-transform ${profileMenu ? "scale-100" : "scale-0"
@@ -47,6 +48,9 @@ const Header = () => {
               <Link to="/profile" onClick={() => setProfileMenu(false)}>
                 Profile
               </Link>
+              <Link 
+              to='/my-blogs'>My Blogs</Link>
+              
               <button
                 onClick={() => {
                   logout(setIsLoggedIn, setUserId);
@@ -96,14 +100,15 @@ const Header = () => {
                   className="relative"
                   onClick={toggleProfileMenu}
                 >
-                  <button
-                    
-                  >Account</button>
+
+                  <img src={photo} alt="user-photo" className="w-[50px] rounded-full cursor-pointer hover:border-4 hover:border-green-500 transition-all" />
+
                   {profileMenu && (
                     <div className="absolute top-12 left-0 w-full bg-green-600 rounded shadow-md p-4 flex flex-col items-center space-y-2 max-h-48 overflow-auto">
                       <Link to="/profile" onClick={toggleHamburgerMenu}>
                         Profile
                       </Link>
+                      <Link to='/my-blogs'>My Blogs</Link>
                       <button
                         onClick={() => {
                           logout(setIsLoggedIn, setUserId);

@@ -11,6 +11,7 @@ import AddBlog from "./components/AddBlog.jsx";
 import ForgetPassword from "./components/ForgetPassword.jsx";
 import ResetPassword from "./components/ResetPassword.jsx";
 import Home from "./components/Home.jsx";
+import MyBlogs from "./components/MyBlogs.jsx";
 
 const BlogList = lazy(() => import("./components/BlogList.jsx"));
 const Blogdetail = lazy(() => import("./components/Blogdetail.jsx"));
@@ -49,6 +50,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/add-blog",
         element: <AddBlog />,
+      },
+      {
+        path: "/my-blogs",
+        element: <MyBlogs />,
       },
       {
         path: "/forget-password",

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { Toaster } from "react-hot-toast";
 
-const Blog = ({ _id, title, body, image, createdAt, updatedAt, postedBy }) => {
+const Blog = ({ _id, title,  image, createdAt }) => {
   const createDate = new Date(createdAt);
   return (
     <div className="flex flex-col gap-4 mx-2 my-2 max-w-[350px] min-h-[300px] p-2 border-2 border-black rounded-md shadow-md shadow-slate-400">

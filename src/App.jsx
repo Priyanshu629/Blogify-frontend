@@ -9,9 +9,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <div className={`space-top `}>
-        <Outlet />
-      </div>
+      <Outlet/>
     </div>
   );
 };

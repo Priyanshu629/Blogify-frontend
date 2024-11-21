@@ -47,6 +47,6 @@ export const deleteBlog = async (blogId, imageId) => {
   );
   if (response.status === 200) {
     toast.success("Blog Deleted Successfully", { position: "top-center" });
-    setInterval(() => window.location.href="/blogs", 1000);
+    setInterval(() => window.location.href="/my-blogs", 1000);
   }
 };

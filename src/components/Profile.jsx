@@ -18,10 +18,10 @@ const Profile = () => {
     }
   }, [isLoggedIn])
 
-  return (
-    <div className="w-[100%] p-2 bg-slate-600  flex flex-col items-center my-4 border-2 ">
-     
 
+  return (
+    <div className="w-[100%] p-2   flex flex-col items-center my-4 border-2 ">
+     
       <img
         className="w-[20%] max-md:w-[50%] rounded-full"
         src={
