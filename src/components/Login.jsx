@@ -3,9 +3,10 @@ import { useMutation } from "@tanstack/react-query";
 import { handleLogin } from "../utils/auth";
 import { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 const Login = () => {
-  const { mutate } = useMutation({
+  const { mutate , isPending } = useMutation({
     mutationFn: ({ username, password }) => handleLogin({ username, password }),
   });
   const [username, setUserName] = useState("");
@@ -28,7 +29,7 @@ const Login = () => {
          className="w-full p-2 border-2 my-2 border-gray-500"
       />
 
-      <button className="bg-green-950 hover:bg-green-800 text-white p-2 text-lg" onClick={() => mutate({ username, password })}>Login</button>
+      <button className="bg-green-950 hover:bg-green-800 text-white p-2 text-lg" onClick={() => mutate({ username, password })}>{username!=="" && isPending?<Loading message={"Logging in..."}/>:"Login"}</button>
       
         <Link className="my-2 font-bold text-red-600 underline" to={"/forget-password"}>Forget Password ?</Link>
     

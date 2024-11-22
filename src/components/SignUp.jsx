@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { handleSignUp } from "../utils/auth";
 import { Toaster, toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 const Signup = () => {
   const [name,setName]=useState("")
@@ -12,7 +13,7 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [profilePicture, setProfilePicture] = useState(null);
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isLoading , isPending } = useMutation({
     mutationFn: (formData) => handleSignUp(formData),
   });
 
@@ -127,7 +128,7 @@ const Signup = () => {
           className="bg-green-950 hover:bg-green-800 text-white p-2 my-4 text-lg"
           disabled={isLoading}
         >
-          {isLoading ? "Signing up..." : "Sign Up"}
+          {isPending ? <Loading message="Signing up..."/> : "Sign Up"}
         </button>
       </form>
 

@@ -1,5 +1,25 @@
 
 
+.loading{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border-top: 3px solid white;
+  border-bottom: 3px solid green;
+  border-left: 3px solid green;
+  border-right: 3px solid green;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading{
+  0% {
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
 
 header ul li{
     margin: 0 10px;
