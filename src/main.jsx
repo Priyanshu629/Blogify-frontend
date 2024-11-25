@@ -12,10 +12,12 @@ import ForgetPassword from "./components/ForgetPassword.jsx";
 import ResetPassword from "./components/ResetPassword.jsx";
 import Home from "./components/Home.jsx";
 import MyBlogs from "./components/MyBlogs.jsx";
+import Profile from "./components/Profile.jsx";
+
 
 const BlogList = lazy(() => import("./components/BlogList.jsx"));
 const Blogdetail = lazy(() => import("./components/Blogdetail.jsx"));
-const Profile=lazy(()=>import("./components/Profile.jsx"))
+const Account = lazy(() => import("./components/Account.jsx"))
 
 const client = new QueryClient();
 const appRouter = createBrowserRouter([
@@ -36,8 +38,19 @@ const appRouter = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/profile",
-        element: <Suspense><Profile /></Suspense>,
+        path: "/account",
+        element: <Suspense><Account /></Suspense>,
+        children: [
+          {
+          path: "/account",
+          element: <MyBlogs />,
+        },
+          {
+          path: "/account/profile",
+          element: <Profile />,
+        },
+      
+      ]
       },
       {
         path: "/signup",
@@ -51,10 +64,7 @@ const appRouter = createBrowserRouter([
         path: "/add-blog",
         element: <AddBlog />,
       },
-      {
-        path: "/my-blogs",
-        element: <MyBlogs />,
-      },
+
       {
         path: "/forget-password",
         element: <ForgetPassword />,

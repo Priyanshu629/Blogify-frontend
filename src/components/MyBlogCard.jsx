@@ -15,7 +15,8 @@ const MyBlogCard = ({_id,title,image,body,setIsDelete,isDelete}) => {
     };
     
     return (
-        <div className="w-[50%] p-2">
+        <div className="w-[100%] p-2">
+
             <div
                 className={`w-[25%] max-sm:w-[70%] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black p-2 rounded-md transition-transform ${
                     isDelete ? "scale-100" : "scale-0"
@@ -35,7 +36,7 @@ const MyBlogCard = ({_id,title,image,body,setIsDelete,isDelete}) => {
             <img
                 src={image ? image : "./blog-dummy-image.jpg"}
                 alt="blog image"
-                className="w-[25%]"
+                className="w-[25%] max-sm:w-[70%]"
             />
             <p>{body}</p>
 

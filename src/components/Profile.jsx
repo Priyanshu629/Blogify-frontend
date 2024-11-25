@@ -1,28 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "../utils/auth";
-import { useUser } from "../context/userContext";
-import { useEffect } from "react";
+
+
 
 const Profile = () => {
-  const { isLoggedIn } = useUser()
-  const { data: user } = useQuery({
-    queryKey: ["profile"],
-    queryFn: getProfile,
-  });
 
-  
-
-  useEffect(() => {
-    if (isLoggedIn === false) {
-      return window.location.href = "/"
-    }
-  }, [isLoggedIn])
-
+    const { data: user } = useQuery({
+        queryKey: ["profile"],
+        queryFn: getProfile,
+      });
 
   return (
-    <div className="w-[100%] p-2   flex flex-col items-center my-4 border-2 ">
-     
-      <img
+    <div className={`md:w-[75%] w-[100%] md:ml-[25%] p-2 `}>
+
+<img
         className="w-[20%] max-md:w-[50%] rounded-full"
         src={
           user?.photo
@@ -51,9 +42,9 @@ const Profile = () => {
 
       </section>
 
-
+      
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile

@@ -9,7 +9,9 @@ const App = () => {
   return (
     <div>
       <Header />
+      <div className="mt-[100px]">
       <Outlet/>
+      </div>
     </div>
   );
 };

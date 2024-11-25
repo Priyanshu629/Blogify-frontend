@@ -16,7 +16,7 @@ const MyBlogs = () => {
     }, [navigate, isLoggedIn])
 
     return (
-        <div className={`w-[100%] p-2 mx-auto relative`}>
+        <div className={`md:w-[75%] w-[100%] md:ml-[25%] p-2 `}>
             <h1>Your Blogs</h1>
 
             {/* Backdrop Overlay */}
