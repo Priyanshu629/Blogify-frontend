@@ -1,53 +1,63 @@
-
-
 import { deleteBlog } from "../utils/fetchData";
 
+const MyBlogCard = ({ _id, title, image, body, setIsDelete, isDelete }) => {
+  const imageId = image?.split("/")[7].split(".")[0];
 
-const MyBlogCard = ({_id,title,image,body,setIsDelete,isDelete}) => {
+  const handleDelete = async () => {
+    await deleteBlog(_id, imageId);
+    setIsDelete(false);
+  };
 
-    
-
-    const imageId = image?.split("/")[7].split(".")[0];
-    
-    const handleDelete = async () => {
-        await deleteBlog(_id, imageId);  
-        setIsDelete(false);
-    };
-    
-    return (
-        <div className="w-[100%] p-2">
-
-            <div
-                className={`w-[25%] max-sm:w-[70%] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black p-2 rounded-md transition-transform ${
-                    isDelete ? "scale-100" : "scale-0"
-                } bg-pink-600 text-white font-bold shadow-lg z-20`}
-            >
-                <h1 className="text-lg font-bold my-2">Are You sure ?</h1>
-
-                <div className="w-full p-2 flex justify-between">
-                    <button onClick={handleDelete}   className="bg-red-400 p-2 rounded-md">Yes</button>
-                    <button onClick={() => setIsDelete(false)} className="bg-gray-400 p-2 rounded-md">
-                        No
-                    </button>
-                </div>
-            </div>
-
-            <h2>{title}</h2>
-            <img
-                src={image ? image : "./blog-dummy-image.jpg"}
-                alt="blog image"
-                className="w-[25%] max-sm:w-[70%]"
-            />
-            <p>{body}</p>
-
-            <div className="action">
-                <button className="bg-gray-400">Update</button>
-                <button onClick={() => setIsDelete(true)} className="bg-red-600">
-                    Delete
-                </button>
-            </div>
+  return (
+    <div className="w-full p-4 sm:w-11/12 md:w-9/12 lg:w-7/12 mx-auto my-6 rounded-lg shadow-lg bg-white">
+      {/* Confirmation Popup */}
+      <div
+        className={`w-full sm:w-[80%] md:w-[30%] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black p-6 rounded-lg transition-transform ${
+          isDelete ? "scale-100" : "scale-0"
+        } bg-pink-600 text-white font-semibold z-20`}
+      >
+        <h1 className="text-xl font-bold mb-4">Are you sure?</h1>
+        <div className="flex justify-between">
+          <button
+            onClick={handleDelete}
+            className="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-lg transition-all"
+          >
+            Yes
+          </button>
+          <button
+            onClick={() => setIsDelete(false)}
+            className="bg-gray-400 hover:bg-gray-500 text-white py-2 px-6 rounded-lg transition-all"
+          >
+            No
+          </button>
         </div>
-    )
-}
+      </div>
 
-export default MyBlogCard
+      {/* Blog Content */}
+      <div className="mb-6">
+        <h2 className="text-2xl font-extrabold text-gray-800 mb-4">{title}</h2>
+        <img
+          src={image ? image : "./blog-dummy-image.jpg"}
+          alt="Blog"
+          className="w-full h-auto rounded-lg shadow-md mb-4"
+        />
+        <p className="text-lg text-gray-700 leading-relaxed">{body}</p>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex justify-end space-x-4 mt-6">
+        <button className="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 rounded-md transition-all">
+          Update
+        </button>
+        <button
+          onClick={() => setIsDelete(true)}
+          className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md transition-all"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default MyBlogCard;

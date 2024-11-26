@@ -10,18 +10,20 @@ const BlogList = () => {
   });
 
   if (isError) {
-    return <div>{error.message}</div>;
+    return <div className="text-red-500">{error.message}</div>;
   }
   if (isLoading) {
     return <Loader />;
   }
 
   return (
-    <div className="w-[95%] p-2 my-3 flex flex-wrap mx-auto">
-     
-      {data?.blogs.map((blog) => (
-        <Blog key={blog._id} {...blog} />
-      ))}
+    <div className="w-[95%] mx-auto p-4">
+      {/* Blog List Container */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {data?.blogs.map((blog) => (
+          <Blog key={blog._id} {...blog} />
+        ))}
+      </div>
     </div>
   );
 };

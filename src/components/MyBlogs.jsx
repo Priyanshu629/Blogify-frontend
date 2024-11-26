@@ -17,7 +17,6 @@ const MyBlogs = () => {
 
     return (
         <div className={`md:w-[75%] w-[100%] md:ml-[25%] p-2 `}>
-            <h1>Your Blogs</h1>
 
             {/* Backdrop Overlay */}
             {isDelete && (

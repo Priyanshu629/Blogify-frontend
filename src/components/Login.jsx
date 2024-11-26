@@ -6,36 +6,56 @@ import { Link } from "react-router-dom";
 import Loading from "./Loading";
 
 const Login = () => {
-  const { mutate , isPending } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: ({ username, password }) => handleLogin({ username, password }),
   });
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <div className="w-[40%] max-sm:w-[90%] flex flex-col mx-auto my-4 border-2 border-black p-4 ">
-      <h1 className="font-bold text-center bg-violet-500 p-2 text-white text-xl">Welcome Back !!</h1>
-      <input
-        type="text"
-        onChange={(e) => setUserName(e.target.value)}
-        placeholder="Enter your username"
-        className="w-full p-2 border-2 my-2 border-gray-500"
-      />
-
-      <input
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Enter your password"
-         className="w-full p-2 border-2 my-2 border-gray-500"
-      />
-
-      <button className="bg-green-950 hover:bg-green-800 text-white p-2 text-lg" onClick={() => mutate({ username, password })}>{username!=="" && isPending?<Loading message={"Logging in..."}/>:"Login"}</button>
+    <div className="w-[100%] sm:w-[400px] mx-auto my-8 p-6 border-2 border-gray-300 rounded-lg shadow-lg bg-white">
+      <h1 className="text-center text-2xl font-semibold bg-gradient-to-r from-violet-500 to-purple-600 text-white p-4 rounded-t-md">
+        Welcome Back!
+      </h1>
       
-        <Link className="my-2 font-bold text-red-600 underline" to={"/forget-password"}>Forget Password ?</Link>
-    
-      <p>
-        Do not have an account? <Link className="underline font-bold text-blue-500" to={"/signup"}>Create Account</Link>
-      </p>
+      <div className="mt-6">
+        <input
+          type="text"
+          onChange={(e) => setUserName(e.target.value)}
+          placeholder="Username"
+          className="w-full p-3 mb-4 border-2 border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+
+        <input
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className="w-full p-3 mb-6 border-2 border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+
+        <button
+          className="w-full py-3 bg-gradient-to-r from-green-600 to-green-500 text-white font-semibold rounded-md transition-all hover:from-green-700 hover:to-green-600 focus:ring-2 focus:ring-green-500 focus:outline-none"
+          onClick={() => mutate({ username, password })}
+        >
+          {username !== "" && isPending ? (
+            <Loading message={"Logging in..."} />
+          ) : (
+            "Login"
+          )}
+        </button>
+
+        <Link className="block text-center my-4 text-sm font-medium text-blue-500 hover:text-blue-700" to={"/forget-password"}>
+          Forgot Password?
+        </Link>
+
+        <p className="text-center text-sm">
+          Don't have an account?{" "}
+          <Link className="underline text-blue-500 font-medium hover:text-blue-700" to={"/signup"}>
+            Create Account
+          </Link>
+        </p>
+      </div>
+
       <Toaster />
     </div>
   );
