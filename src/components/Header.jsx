@@ -3,17 +3,18 @@ import { useState } from "react";
 import { useUser } from "../context/userContext";
 import { logout } from "../utils/auth";
 import { useNavigate, useLocation } from "react-router-dom";
+import { FaHome, FaPen, FaSignInAlt, FaSignOutAlt, FaBook } from 'react-icons/fa';
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn, setUserId, photo } = useUser();
+  const { isLoggedIn, setIsLoggedIn, photo } = useUser();
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
   const navigate = useNavigate();
   const pathname = useLocation().pathname;
 
   return (
     <header className="flex w-full fixed justify-between px-6 md:px-8 h-20 bg-blue-950 items-center text-xl text-white font-semibold top-0 z-50 shadow-lg transition-all duration-300 ease-in-out">
-      <Link to="/" className="text-2xl font-bold">
-        Blogify
+      <Link to="/" className="text-2xl font-bold flex items-center space-x-2">
+        <FaHome size={28} /> <span>Blogify</span>
       </Link>
 
       {/* Desktop Menu */}
@@ -23,9 +24,10 @@ const Header = () => {
             to="/"
             className={`${
               pathname === "/" ? "border-b-2 border-purple-700" : "hover:border-b-2 hover:border-purple-700"
-            } transition-all duration-200`}
+            } flex items-center space-x-2 transition-all duration-200`}
           >
-            Home
+            <FaHome size={20} />
+            <span>Home</span>
           </Link>
         </li>
         <li>
@@ -33,9 +35,10 @@ const Header = () => {
             to="/blogs"
             className={`${
               pathname === "/blogs" ? "border-b-2 border-purple-700" : "hover:border-b-2 hover:border-purple-700"
-            } transition-all duration-200`}
+            } flex items-center space-x-2 transition-all duration-200`}
           >
-            Read Blogs
+            <FaBook size={20} />
+            <span>Read Blogs</span>
           </Link>
         </li>
         {isLoggedIn ? (
@@ -45,19 +48,21 @@ const Header = () => {
                 to="/add-blog"
                 className={`${
                   pathname === "/add-blog" ? "border-b-2 border-purple-700" : "hover:border-b-2 hover:border-purple-700"
-                } transition-all duration-200`}
+                } flex items-center space-x-2 transition-all duration-200`}
               >
-                Write Blog
+                <FaPen size={20} />
+                <span>Write Blog</span>
               </Link>
             </li>
             <li
-              className="cursor-pointer hover:bg-purple-700 p-2 rounded-md transition-all duration-200"
+              className="cursor-pointer hover:bg-purple-700 p-2 rounded-md transition-all duration-200 flex items-center space-x-2"
               onClick={() => {
                 logout();
                 setIsLoggedIn(false);
               }}
             >
-              Logout
+              <FaSignOutAlt size={20} />
+              <span>Logout</span>
             </li>
             <li>
               <img
@@ -74,9 +79,10 @@ const Header = () => {
               to="/login"
               className={`${
                 pathname === "/login" ? "border-b-2 border-purple-700" : "hover:border-b-2 hover:border-purple-700"
-              } transition-all duration-200`}
+              } flex items-center space-x-2 transition-all duration-200`}
             >
-              Login
+              <FaSignInAlt size={20} />
+              <span>Login</span>
             </Link>
           </li>
         )}
@@ -102,10 +108,11 @@ const Header = () => {
             to="/"
             className={`${
               pathname === "/" ? "border-b-2 border-purple-700" : "hover:border-b-2 hover:border-purple-700"
-            } transition-all duration-200`}
+            } flex items-center space-x-2 transition-all duration-200`}
             onClick={() => setHamburgerMenu(false)}
           >
-            Home
+            <FaHome size={20} />
+            <span>Home</span>
           </Link>
         </li>
         <li>
@@ -113,10 +120,11 @@ const Header = () => {
             to="/blogs"
             className={`${
               pathname === "/blogs" ? "border-b-2 border-purple-700" : "hover:border-b-2 hover:border-purple-700"
-            } transition-all duration-200`}
+            } flex items-center space-x-2 transition-all duration-200`}
             onClick={() => setHamburgerMenu(false)}
           >
-            Read Blogs
+            <FaBook size={20} />
+            <span>Read Blogs</span>
           </Link>
         </li>
         {isLoggedIn ? (
@@ -126,20 +134,22 @@ const Header = () => {
                 to="/add-blog"
                 className={`${
                   pathname === "/add-blog" ? "border-b-2 border-purple-700" : "hover:border-b-2 hover:border-purple-700"
-                } transition-all duration-200`}
+                } flex items-center space-x-2 transition-all duration-200`}
                 onClick={() => setHamburgerMenu(false)}
               >
-                Write Blog
+                <FaPen size={20} />
+                <span>Write Blog</span>
               </Link>
             </li>
             <li
-              className="cursor-pointer hover:bg-purple-700 p-2 rounded-md transition-all duration-200"
+              className="cursor-pointer hover:bg-purple-700 p-2 rounded-md transition-all duration-200 flex items-center space-x-2"
               onClick={() => {
                 logout();
                 setIsLoggedIn(false);
               }}
             >
-              Logout
+              <FaSignOutAlt size={20} />
+              <span>Logout</span>
             </li>
             <li>
               <div
@@ -163,10 +173,11 @@ const Header = () => {
               to="/login"
               className={`${
                 pathname === "/login" ? "border-b-2 border-purple-700" : "hover:border-b-2 hover:border-purple-700"
-              } transition-all duration-200`}
+              } flex items-center space-x-2 transition-all duration-200`}
               onClick={() => setHamburgerMenu(false)}
             >
-              Login
+              <FaSignInAlt size={20} />
+              <span>Login</span>
             </Link>
           </li>
         )}
