@@ -7,9 +7,10 @@ import Loading from "./Loading";
 
 const AddBlog = () => {
   const { isLoggedIn } = useUser();
-  const { mutate,isPending } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: ({ title, body, image }) => addBlog({ title, body, image }),
   });
+
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
@@ -21,12 +22,20 @@ const AddBlog = () => {
   }, [isLoggedIn]);
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white my-4 border-2 shadow-lg rounded-lg">
-      <h1 className="text-2xl font-semibold text-center mb-6">Write Blog</h1>
+    <div className="max-w-3xl mx-auto p-8 bg-white my-6 border-2 shadow-lg rounded-lg">
+      <h1 className="text-3xl font-semibold text-center mb-6 text-gray-800">Write a New Blog</h1>
 
-      <div className="mb-4">
-        <label htmlFor="image" className="text-gray-700 font-medium block border-2 p-2 cursor-pointer hover:border-green-400">
-          {image ? image.name : "Choose Image for your blog + (*optional)"}
+      {/* Image Selection */}
+      <div className="mb-6">
+        <label
+          htmlFor="image"
+          className="text-gray-700 font-medium block mb-2 cursor-pointer hover:border-green-400 transition-all"
+        >
+          {image ? (
+            <span className="text-green-600">{image.name}</span>
+          ) : (
+            "Choose an Image for your Blog (Optional)"
+          )}
         </label>
         <input
           type="file"
@@ -37,31 +46,41 @@ const AddBlog = () => {
         />
       </div>
 
-      <div className="mb-4">
+      {/* Title Input */}
+      <div className="mb-6">
         <input
           type="text"
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="Enter Title"
-          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter Blog Title"
+          className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
         />
       </div>
 
-      <div className="mb-4">
+      {/* Body Input */}
+      <div className="mb-6">
         <textarea
           rows="8"
-          name=""
-          id="text-area"
-          placeholder="Enter Body"
           onChange={(e) => setBody(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Write your Blog Body"
+          className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
         ></textarea>
       </div>
 
+      {/* Submit Button */}
       <button
         onClick={() => mutate({ title, body, image })}
-        className="w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200 font-bold"
+        disabled={isPending || title === "" || body === ""}
+        className={`w-full py-4 text-white rounded-md ${
+          isPending || title === "" || body === ""
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-blue-600 hover:bg-blue-700 transition duration-200"
+        }`}
       >
-       {title!=="" && isPending?<Loading message={"Adding Blog"}/>:"Add +"}
+        {isPending ? (
+          <Loading message={"Adding Blog..."} />
+        ) : (
+          "Add Blog"
+        )}
       </button>
 
       <Toaster />
