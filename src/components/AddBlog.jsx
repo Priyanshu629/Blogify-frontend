@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { addBlog } from "../utils/fetchData";
 import { Toaster } from "react-hot-toast";
-import { useUser } from "../context/userContext";
+
 import Loading from "./Loading";
 
 const AddBlog = () => {
-  const { isLoggedIn } = useUser();
-  const { mutate, isPending } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: ({ title, body, image }) => addBlog({ title, body, image }),
   });
 
@@ -15,15 +14,11 @@ const AddBlog = () => {
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
 
-  useEffect(() => {
-    if (isLoggedIn === false) {
-      return (window.location.href = "/");
-    }
-  }, [isLoggedIn]);
-
   return (
     <div className="max-w-3xl mx-auto p-8 bg-white my-6 border-2 shadow-lg rounded-lg">
-      <h1 className="text-3xl font-semibold text-center mb-6 text-gray-800">Write a New Blog</h1>
+      <h1 className="text-3xl font-semibold text-center mb-6 text-gray-800">
+        Write a New Blog
+      </h1>
 
       {/* Image Selection */}
       <div className="mb-6">
@@ -69,18 +64,14 @@ const AddBlog = () => {
       {/* Submit Button */}
       <button
         onClick={() => mutate({ title, body, image })}
-        disabled={isPending || title === "" || body === ""}
+        disabled={isLoading || title === "" || body === ""}
         className={`w-full py-4 text-white rounded-md ${
-          isPending || title === "" || body === ""
+          isLoading || title === "" || body === ""
             ? "bg-gray-400 cursor-not-allowed"
             : "bg-blue-600 hover:bg-blue-700 transition duration-200"
         }`}
       >
-        {isPending ? (
-          <Loading message={"Adding Blog..."} />
-        ) : (
-          "Add Blog"
-        )}
+        {isLoading ? <Loading message="Adding Blog..." /> : "Add Blog"}
       </button>
 
       <Toaster />

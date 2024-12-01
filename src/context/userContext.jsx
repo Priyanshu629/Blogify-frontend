@@ -48,7 +48,7 @@ const UserProvider = ({ children }) => {
 
   useEffect(() => {
     checkCookie();
-  }, [isLoggedIn]);
+  }, []);
 
   useEffect(()=>{
    myBlogs()

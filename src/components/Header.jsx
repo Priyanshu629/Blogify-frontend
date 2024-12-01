@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { FaHome, FaPen, FaSignInAlt, FaSignOutAlt, FaBook } from 'react-icons/fa';
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn, photo } = useUser();
+  const { isLoggedIn, setIsLoggedIn,setUserId, photo } = useUser();
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
   const navigate = useNavigate();
   const pathname = useLocation().pathname;
@@ -57,8 +57,7 @@ const Header = () => {
             <li
               className="cursor-pointer hover:bg-purple-700 p-2 rounded-md transition-all duration-200 flex items-center space-x-2"
               onClick={() => {
-                logout();
-                setIsLoggedIn(false);
+                logout(setIsLoggedIn,setUserId);
               }}
             >
               <FaSignOutAlt size={20} />

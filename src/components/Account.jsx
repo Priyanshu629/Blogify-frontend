@@ -1,19 +1,15 @@
-import { useUser } from "../context/userContext";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { FaUser, FaClipboardList } from "react-icons/fa";
-import Footer from "./Footer";
+
 
 const Account = () => {
-  const { isLoggedIn } = useUser();
+  
   const pathname = useLocation().pathname;
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    if (isLoggedIn === false) {
-      return (window.location.href = "/");
-    }
-  }, [isLoggedIn]);
+ 
 
   return (
     <div className="w-[100%]">
